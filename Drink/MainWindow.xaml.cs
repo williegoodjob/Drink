@@ -20,5 +20,11 @@ namespace Drink
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var target = sender as TextBox;
+            MessageBox.Show(target.Text);
+        }
     }
 }
