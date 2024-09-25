@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel Margin="50,40,145,182" Background="#FFDC8C8C"/>
+        <Button x:Name="OrderButton" Content="購買" Margin="660,52,50,355"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,255,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="156" Width="700"/>
     </Grid>
 </Window>
