@@ -25,6 +25,7 @@ namespace Drink
             {"可樂大杯",50},
             {"可樂小杯",30},
         };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -54,6 +55,11 @@ namespace Drink
 
                 MessageBox.Show(drinkName + " " + amount + "杯，共" + drinks[drinkName] * amount + "元");
             }
+        }
+
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

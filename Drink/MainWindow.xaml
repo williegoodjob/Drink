@@ -44,7 +44,7 @@
                 <TextBox TextWrapping="Wrap" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontStyle="Italic" Margin="180,5,0,5" Padding="0,0,5,0" TextChanged="TextBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
-        <Button x:Name="OrderButton" Content="買!" Margin="637,25,0,0" HorizontalAlignment="Left" Width="123" Height="40" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="OrderButton" Content="買!" Margin="637,25,0,0" HorizontalAlignment="Left" Width="123" Height="40" VerticalAlignment="Top" Grid.Column="1" Click="OrderButton_Click"/>
         <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="0,348,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="139" Width="760" Background="#FF9CE67B" Grid.Column="1"/>
     </Grid>
 </Window>
