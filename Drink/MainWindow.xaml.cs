@@ -30,34 +30,58 @@ namespace Drink
         public MainWindow()
         {
             InitializeComponent();
+            loadDrink();
         }
+        private void loadDrink()
+        {
+            foreach (var drink in drinks)
+            {
+                var cp = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Margin = new Thickness(3),
+                    Background = Brushes.LightPink,
+                    Height = 40
+                };
 
-        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    var target = sender as TextBox;
+                var cb = new CheckBox
+                {
+                    Content = drink.Key,
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(5)
+                };
 
-        //    int amount;
-        //    bool success = int.TryParse(target.Text, out amount);
-        //    if (!success)
-        //    {
-        //        MessageBox.Show("請輸入數字");
-        //        return;
-        //    }
-        //    else if (amount <= 0)
-        //    {
-        //        MessageBox.Show("請輸入正整數");
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        var targetStackPanel = target.Parent as StackPanel;
-        //        var targetPrice = targetStackPanel.Children[0] as Label;
-        //        var drinkName = targetPrice.Content.ToString();
+                var slider = new Slider
+                {
+                    Width = 180,
+                    Minimum = 0,
+                    Maximum = 10,
+                    Value = 0,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(50,5,5,5),
+                    IsSnapToTickEnabled = true,
+                    TickFrequency = 1
+                };
 
-        //        MessageBox.Show(drinkName + " " + amount + "杯，共" + drinks[drinkName] * amount + "元");
-        //    }
-        //}
+                var num = new Label
+                {
+                    Content = "0",
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(5)
+                };
 
+                num.SetBinding(Label.ContentProperty, new Binding("Value") { Source = slider });
+
+                cp.Children.Add(cb);
+                cp.Children.Add(slider);
+                cp.Children.Add(num);
+                drinkList.Children.Add(cp);
+            }
+        }
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -65,12 +89,6 @@ namespace Drink
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            var target = sender as Slider;
-            var targetStackPanel = target.Parent as StackPanel;
-            var drink = targetStackPanel.Children[0] as Label;
-            var drinkName = drink.Content.ToString();
-            MessageBox.Show(drinkName + " " + target.Value + "杯，共" + drinks[drinkName] * target.Value + "元");
-
         }
     }
 }
