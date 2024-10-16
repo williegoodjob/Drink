@@ -11,10 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Drink
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+{ 
     public partial class MainWindow : Window
     {
         Dictionary<string, int> drinks = new Dictionary<string, int>
@@ -97,6 +94,7 @@ namespace Drink
                 drinkList.Children.Add(cp);
             }
         }
+
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             var rb = sender as RadioButton;
@@ -104,8 +102,8 @@ namespace Drink
             {
                 takeout = rb.Content.ToString();
             }
-
         }
+
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < drinkList.Children.Count; i++)
@@ -128,7 +126,6 @@ namespace Drink
                 }
             }
             GenerateOutputList();
-
         }
 
         private void GenerateOutputList()
@@ -147,7 +144,6 @@ namespace Drink
             //增加一個分隔線
             result.Append("==========\n");
             result.Append($"小計：{total}元\n");
-
             result.Append("優惠項目:\n");
             result.Append("----------------\n");
             int sellPrice = total;
@@ -167,7 +163,6 @@ namespace Drink
             }
             result.Append("----------------\n");
             result.Append($"應付:{sellPrice}\n");
-
 
             ResultTextBlock.Text = result.ToString();
         }
