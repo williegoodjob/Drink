@@ -115,9 +115,16 @@ namespace Drink
                 var slider = cp.Children[2] as Slider;
                 var amount = (int)slider.Value;
 
-                if (cb.IsChecked == true && slider.Value > 0 )
+                if (cb.IsChecked == true && slider.Value > 0)
                 {
-                    orders.Add(cb.Content.ToString(), amount);
+                    if (orders.ContainsKey(cb.Content.ToString()))
+                    {
+                        orders[cb.Content.ToString()] = amount;
+                    }
+                    else
+                    {
+                        orders.Add(cb.Content.ToString(), amount);
+                    }
                 }
             }
 
@@ -125,7 +132,7 @@ namespace Drink
             var result = new StringBuilder();
             result.Append($"內用/外帶：{takeout}\n");
             result.Append("訂購清單:\n");
-            result.Append("==========================\n");
+            result.Append("==========\n");
 
             foreach (var order in orders)
             {
@@ -133,11 +140,11 @@ namespace Drink
                 total += drinks[order.Key] * order.Value;
             }
             //增加一個分隔線
-            result.Append("==========================\n");
+            result.Append("==========\n");
             result.Append($"小計：{total}元\n");
 
             result.Append("優惠項目:\n");
-            result.Append("--------------------------------\n");
+            result.Append("----------------\n");
             int sellPrice = total;
             if (total >= 500)
             {
@@ -153,7 +160,7 @@ namespace Drink
             {
                 result.Append("無折扣\n");
             }
-            result.Append("--------------------------------\n");
+            result.Append("----------------\n");
             result.Append($"應付:{sellPrice}\n");
 
 
