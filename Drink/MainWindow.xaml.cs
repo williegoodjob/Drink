@@ -127,7 +127,12 @@ namespace Drink
                     }
                 }
             }
+            GenerateOutputList();
 
+        }
+
+        private void GenerateOutputList()
+        {
             int total = 0;
             var result = new StringBuilder();
             result.Append($"內用/外帶：{takeout}\n");
@@ -166,6 +171,5 @@ namespace Drink
 
             ResultTextBlock.Text = result.ToString();
         }
-
     }
 }
