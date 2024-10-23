@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,20 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using CsvHelperApplication;
+using System.Diagnostics;
+using Microsoft.Win32;
+
 namespace Drink
-{ 
+{
     public partial class MainWindow : Window
     {
         Dictionary<string, int> drinks = new Dictionary<string, int>
         {
-            {"紅茶大杯",60},
-            {"紅茶小杯",40},
-            {"綠茶大杯",50},
-            {"綠茶小杯",30},
-            {"可樂大杯",50},
-            {"可樂小杯",30},
-            {"咖啡大杯",80},
-            {"咖啡小杯",50},
+            //{"紅茶大杯",60},
+            //{"紅茶小杯",40},
+            //{"綠茶大杯",50},
+            //{"綠茶小杯",30},
+            //{"可樂大杯",50},
+            //{"可樂小杯",30},
+            //{"咖啡大杯",80},
+            //{"咖啡小杯",50},
         };
 
         Dictionary<string, int> orders = new Dictionary<string, int>();
@@ -32,7 +40,43 @@ namespace Drink
         public MainWindow()
         {
             InitializeComponent();
+            //CsvInit("D:\\DevProgram\\VS\\source\\Drink\\Drink\\drinkitem.csv", drinks);
+            openSourceFile(drinks);
             loadDrink();
+        }
+
+        private void openSourceFile(Dictionary<string, int> drinks)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "CSV files (*.csv)|*.csv|Text files (*.txt)|*.txt|All files|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                CsvInit(openFileDialog.FileName, drinks);
+            }
+
+        }
+        private void CsvInit(string fileName, Dictionary<string, int> drinks)
+        {
+            try
+            {
+                var readConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    HasHeaderRecord = false
+                };
+                using (var reader = new StreamReader(fileName))
+                using (var csv = new CsvReader(reader, readConfiguration))
+                {
+                    var records = csv.GetRecords<DrinksFormat>();
+                    foreach (var D in records)
+                    {
+                        drinks.Add(D.Name, D.Price);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         private void loadDrink()
         {
