@@ -7,19 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="542" Width="740">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="101*"/>
+            <RowDefinition Height="427*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="777*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="512*"/>
+            <ColumnDefinition Width="217*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="drinkList" Margin="1,101,0,0" Background="#FF8CDADC" HorizontalAlignment="Left" Width="471" Height="242" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="OrderButton" Content="買!" Margin="477,36,8,0" Height="40" VerticalAlignment="Top" Grid.Column="1" Click="OrderButton_Click"/>
-        <GroupBox Grid.Column="1" Header="內用/外帶" Margin="1,25,0,0" Background="#FFD5F2F3" Height="71" VerticalAlignment="Top" HorizontalAlignment="Left" Width="471">
+        <StackPanel x:Name="drinkList" Margin="0,4,0,0" Background="#FF8CDADC" HorizontalAlignment="Center" Width="472" Height="242" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="OrderButton" Content="買!" Margin="2,36,8,0" Height="60" VerticalAlignment="Top" Grid.Column="2" Click="OrderButton_Click"/>
+        <GroupBox Grid.Column="1" Header="內用/外帶" Margin="0,25,0,0" Background="#FFD5F2F3" Height="71" VerticalAlignment="Top" HorizontalAlignment="Center" Width="472">
             <StackPanel Orientation="Horizontal">
                 <RadioButton Content="內用" Checked="RadioButton_Checked" VerticalContentAlignment="Center" Padding="0,-1,0,0" Margin="20,0,0,0" FontSize="18" FontWeight="Bold" IsChecked="True"/>
                 <RadioButton Content="外帶" Checked="RadioButton_Checked" VerticalContentAlignment="Center" Padding="0,-1,0,0" Margin="20,0,0,0" FontSize="18" FontWeight="Bold"/>
             </StackPanel>
         </GroupBox>
-        <TextBlock x:Name="ResultTextBlock" Margin="477,81,8,20" Background="#FF887BE6" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <TextBlock x:Name="ResultTextBlock" Margin="2,4,8,20" Background="#FF887BE6" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.Row="1"/>
     </Grid>
 </Window>
