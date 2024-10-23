@@ -209,6 +209,17 @@ namespace Drink
             result.Append($"應付:{sellPrice}\n");
 
             ResultTextBlock.Text = result.ToString();
+            SaveOrder(result.ToString());
+        }
+
+        private void SaveOrder(string content)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, content);
+            }
         }
     }
 }
