@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:Drink"
         mc:Ignorable="d"
         Title="MainWindow" Height="542" Width="740">
-    <Grid>
+    <Grid Margin="0,0,0,22" MinWidth="740" MinHeight="530">
         <Grid.RowDefinitions>
-            <RowDefinition Height="101*"/>
-            <RowDefinition Height="427*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="512*"/>
-            <ColumnDefinition Width="217*"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="252*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="drinkList" Margin="0,4,0,0" Background="#FF8CDADC" HorizontalAlignment="Center" Width="472" Height="242" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
         <Button x:Name="OrderButton" Content="買!" Margin="2,36,8,0" Height="60" VerticalAlignment="Top" Grid.Column="2" Click="OrderButton_Click"/>
